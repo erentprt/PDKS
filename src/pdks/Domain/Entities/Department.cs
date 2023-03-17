@@ -1,6 +1,7 @@
 ﻿using Core.Persistence.Repositories;
 
-namespace Domain.Enums;
+
+namespace Domain.Entities;
 
 public class Department:Entity
 {

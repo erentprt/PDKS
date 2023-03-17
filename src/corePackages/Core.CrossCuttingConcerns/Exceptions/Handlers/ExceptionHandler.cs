@@ -1,4 +1,5 @@
 ﻿using Core.CrossCuttingConcerns.Exceptions.Types;
+using Core.CrossCuttingConcers.Exceptions.Types;
 
 namespace Core.CrossCuttingConcerns.Exceptions.Handlers;
 

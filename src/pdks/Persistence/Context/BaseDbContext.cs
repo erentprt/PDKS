@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using Core.Persistence.Repositories;
-using Domain.Enums;
+using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.Configuration;

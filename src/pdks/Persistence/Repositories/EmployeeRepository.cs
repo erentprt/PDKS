@@ -1,6 +1,6 @@
 ﻿using Application.Services.Repositories;
 using Core.Persistence.Repositories;
-using Domain.Enums;
+using Domain.Entities;
 using Persistence.Context;
 
 namespace Persistence.Repositories;
