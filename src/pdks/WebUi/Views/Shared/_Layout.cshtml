@@ -1,49 +1,130 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@ViewData["Title"] - WebUi</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="~/WebUi.styles.css" asp-append-version="true"/>
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - Admin Template</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style type= "text/css">
+    @RenderSection("Styles", required: false)
+
+#sidebar {
+min-width: 250px;
+max-width: 250px;
+min-height: 100vh;
+}
+#sidebar.active {
+margin-left: -250px;
+}
+#main-content{
+min-height:100vh;
+}
+footer{
+height:50px;
+background-color:#f5f5f5;
+text-align:center;
+line-height:50px;
+}
+@@media (max-width:768px){
+#sidebar{
+margin-left:-250px;
+}
+#sidebar.active{
+margin-left:0px;
+}
+}
+</style>
+
+    </head>
 <body>
-<header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container-fluid">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WebUi</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-<div class="container">
-    <main role="main" class="pb-3">
-        @RenderBody()
-    </main>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand text-white" href="#">Admin Panel</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link text-white" href="#">Anasayfa</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-light" href="#">Personeller</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-light" href="/Department/Index">Departmanlar</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-light" href="#">Raporlar</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-light" href="#">Ayarlar</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-light" href="#">Çıkış yap</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-3 bg-dark" id="sidebar">
+  <ul class="list-group mt-2">
+    <li class="list-group-item "><a href="#">Personeller</a></li>
+    <li class="list-group-item "><a href="/Department/Index">Departmanlar</a></li>
+    <li class="list-group-item"><a href="#">Raporlar</a></li>
+    <li class="list-group-item"><a href="#">Ayarlar</a></li>
+    <li class="list-group-item"><a href="#">Çıkış yap</a></li>
+  </ul>
+    </div>
+    <div class= "col-9 bg-white p-4" id= "main-content">
+    <!--Main content -->
+            @RenderBody()
+    <!--Main content end -->
+    </div>
+  </div>
 </div>
 
-<footer class="border-top footer text-muted">
-    <div class="container">
-        &copy; 2023 - WebUi - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+<div class="container-fluid bg-dark">
+<footer class="bg-dark py-3 text-white">
+    <div class="row bg-dark">
+      <div class="col-md-6 float-left">
+        <h5>Hakkımda</h5>
+        <p class="text-left lh-sm">Merhaba ben Eren TEPRET. KOÜ Bilgisayar programcılığı bölümü öğrencisiyim. Bu projeyi ASP.NET Core MVC ile proje ödevi için geliştirdim.</p>
+      </div>
+      <div class="col-md-6">
+        <h5>Sosyal Medya Linkleri</h5>
+        <ul class="list-unstyled">
+          <li><a href="https://www.instagram.com/erentprt" class="text-decoration-none">Instagram</a></li>
+          <li><a href="https://www.linkedin.com/in/eren-tepret-329b33248/" class="text-decoration-none">Linkedin</a></li>
+          <li><a href="https://github.com/erentprt" class="text-decoration-none">Github</a></li>
+        </ul>
+      </div>
     </div>
 </footer>
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
-@await RenderSectionAsync("Scripts", required: false)
+  </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+    <script type= "text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
+        });
+    </script>
+
+
 </body>
 </html>

@@ -7,8 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Features\Departments\Queries\GetById" />
-      <Folder Include="Features\Departments\Queries\GetList" />
       <Folder Include="Features\Departments\Queries\GetListByDynamic" />
       <Folder Include="Features\Departments\Validations" />
       <Folder Include="Features\Employees" />

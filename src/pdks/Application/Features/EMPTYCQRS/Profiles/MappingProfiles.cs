@@ -2,9 +2,7 @@
 
 namespace Application.Features.EMPTYCQRS.Profiles;
 
-public class MappingProfiles:Profile
+public class MappingProfiles
 {
-    protected MappingProfiles()
-    {
-    }
+  
 }

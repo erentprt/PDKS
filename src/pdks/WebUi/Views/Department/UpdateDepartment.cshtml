@@ -1,0 +1,20 @@
+﻿@model Application.Features.Departments.Queries.GetById.GetByIdDepartmentResponse
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+@using (Html.BeginForm("UpdateDepartment", "Department", FormMethod.Post))
+{
+  
+  @Html.HiddenFor(x=>  x.Id, new { @class = "form-control" })
+  <div class="form-group">
+    <label for="isim">İsim</label>
+    @Html.TextBoxFor(x=>x.Name ,new { @class = "form-control" })
+  </div>
+  <div class="form-group">
+    <label for="aciklama">Açıklama</label>
+    @Html.TextAreaFor( x=>x.Description, new { @class = "form-control" })
+  </div>
+  <button type="submit" class="btn btn-primary">Güncelle</button>
+}

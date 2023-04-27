@@ -10,6 +10,15 @@ public class DeleteDepartmentCommand:IRequest<DeletedDepartmentsResponse>
 {
     public int Id { get; set; }
     
+    public DeleteDepartmentCommand(int id)
+    {
+        Id = id;
+    }
+
+    public DeleteDepartmentCommand()
+    {
+    }
+
     public class DeleteDepartmentCommandHandler:IRequestHandler<DeleteDepartmentCommand,DeletedDepartmentsResponse>
     {
         private readonly IDepartmentRepository _departmentRepository;
