@@ -29,13 +29,14 @@ public class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
         builder.Property(e => e.EmployeeCode).HasMaxLength(10).IsRequired();
         
         builder.Property(e => e.HourlySalary);
-        builder.Property(e => e.MonthlySalary);
+        builder.Property(e => e.MonthlySalary).HasPrecision(18,4);
+        builder.Property(e => e.AllTimeSalary).HasPrecision(18,4).HasDefaultValue(0.0D);
         builder.Property(e => e.DateOfTermination);
         builder.Property(e => e.TerminationReason).HasMaxLength(99);
         builder.Property(e => e.TerminationDescription).HasMaxLength(555);
         
-        builder.HasIndex(e => e.IdentityNumbeer).IsUnique();
-        builder.Property(e => e.IdentityNumbeer).HasMaxLength(22);
+        builder.HasIndex(e => e.IdentityNumber).IsUnique();
+        builder.Property(e => e.IdentityNumber).HasMaxLength(22);
 
 
         builder.HasOne(e => e.Department)
@@ -65,7 +66,8 @@ public class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
                 null,
                 false,
                 27,
-                8100),
+                8100,
+                0),
             new(
                 2,
                 1,
@@ -85,7 +87,8 @@ public class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
                 null,
                 false,
                 30,
-                9000),
+                9000,
+                0),
             new(
                 3,
                 1,
@@ -105,7 +108,8 @@ public class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
                 null,
                 false,
                 40,
-                12000),
+                12000,
+                0),
             
             new(
                 4,
@@ -126,7 +130,8 @@ public class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
                 null,
                 false,
                 40,
-                12000),
+                12000,
+                0),
             new(
                 5,
                 2,
@@ -146,7 +151,8 @@ public class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
                 null,
                 false,
                 40,
-                12000),
+                12000,
+                0),
             
         };
         

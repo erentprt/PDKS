@@ -23,7 +23,7 @@ public class DepartmentBusinessRules:BaseBusinessRules
             throw new BusinessException(DepartmentsMessages.DepartmentNotExists);
     }
     
-    public void BrandIdShouldExistWhenSelected(Department? brand)
+    public void DepartmentIdShouldExistWhenSelected(Department? brand)
     {
         if (brand == null)
             throw new BusinessException(DepartmentsMessages.DepartmentNotExists);

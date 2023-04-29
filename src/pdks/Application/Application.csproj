@@ -9,7 +9,8 @@
     <ItemGroup>
       <Folder Include="Features\Departments\Queries\GetListByDynamic" />
       <Folder Include="Features\Departments\Validations" />
-      <Folder Include="Features\Employees" />
+      <Folder Include="Features\Employees\Queries\GetListByDynamic" />
+      <Folder Include="Features\Employees\Validations" />
       <Folder Include="Features\EMPTYCQRS\Commands\Create" />
       <Folder Include="Features\EMPTYCQRS\Commands\Delete" />
       <Folder Include="Features\EMPTYCQRS\Commands\Update" />
@@ -19,6 +20,12 @@
       <Folder Include="Features\EMPTYCQRS\Queries\GetListByDynamic" />
       <Folder Include="Features\EMPTYCQRS\Rules" />
       <Folder Include="Features\EMPTYCQRS\Validations" />
+      <Folder Include="Features\LoginAndExits\Constants" />
+      <Folder Include="Features\LoginAndExits\Queries\GetById" />
+      <Folder Include="Features\LoginAndExits\Queries\GetList" />
+      <Folder Include="Features\LoginAndExits\Queries\GetListByDynamic" />
+      <Folder Include="Features\LoginAndExits\Rules" />
+      <Folder Include="Features\LoginAndExits\Validations" />
     </ItemGroup>
 
     <ItemGroup>

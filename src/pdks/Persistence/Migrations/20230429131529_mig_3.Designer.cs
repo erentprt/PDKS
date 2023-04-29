@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence.Context;
 
@@ -11,9 +12,11 @@ using Persistence.Context;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(BaseDbContext))]
-    partial class BaseDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230429131529_mig_3")]
+    partial class mig3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -92,7 +95,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateOfEmployment")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 4, 29, 13, 17, 7, 87, DateTimeKind.Utc).AddTicks(8036));
+                        .HasDefaultValue(new DateTime(2023, 4, 29, 13, 15, 29, 681, DateTimeKind.Utc).AddTicks(9471));
 
                     b.Property<DateTime?>("DateOfTermination")
                         .HasColumnType("datetime2");
@@ -185,7 +188,7 @@ namespace Persistence.Migrations
                             AtWork = false,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(2003, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfEmployment = new DateTime(2023, 4, 29, 13, 17, 7, 88, DateTimeKind.Utc).AddTicks(2172),
+                            DateOfEmployment = new DateTime(2023, 4, 29, 13, 15, 29, 682, DateTimeKind.Utc).AddTicks(4278),
                             DepartmentId = 1,
                             Email = "employee1@test.com",
                             EmployeeCode = "EMP001",
@@ -206,7 +209,7 @@ namespace Persistence.Migrations
                             AtWork = false,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(1990, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfEmployment = new DateTime(2023, 4, 29, 13, 17, 7, 88, DateTimeKind.Utc).AddTicks(2188),
+                            DateOfEmployment = new DateTime(2023, 4, 29, 13, 15, 29, 682, DateTimeKind.Utc).AddTicks(4298),
                             DepartmentId = 1,
                             Email = "employee2@test.com",
                             EmployeeCode = "EMP002",
@@ -227,7 +230,7 @@ namespace Persistence.Migrations
                             AtWork = false,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(1990, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfEmployment = new DateTime(2023, 4, 29, 13, 17, 7, 88, DateTimeKind.Utc).AddTicks(2192),
+                            DateOfEmployment = new DateTime(2023, 4, 29, 13, 15, 29, 682, DateTimeKind.Utc).AddTicks(4303),
                             DepartmentId = 1,
                             Email = "employee3@test.com",
                             EmployeeCode = "EMP003",
@@ -248,7 +251,7 @@ namespace Persistence.Migrations
                             AtWork = false,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(1990, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfEmployment = new DateTime(2023, 4, 29, 13, 17, 7, 88, DateTimeKind.Utc).AddTicks(2197),
+                            DateOfEmployment = new DateTime(2023, 4, 29, 13, 15, 29, 682, DateTimeKind.Utc).AddTicks(4307),
                             DepartmentId = 2,
                             Email = "employee4@test.com",
                             EmployeeCode = "EMP004",
@@ -269,7 +272,7 @@ namespace Persistence.Migrations
                             AtWork = false,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(1990, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfEmployment = new DateTime(2023, 4, 29, 13, 17, 7, 88, DateTimeKind.Utc).AddTicks(2200),
+                            DateOfEmployment = new DateTime(2023, 4, 29, 13, 15, 29, 682, DateTimeKind.Utc).AddTicks(4310),
                             DepartmentId = 2,
                             Email = "employee5@test.com",
                             EmployeeCode = "EMP005",
@@ -300,7 +303,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("LoginTime")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 4, 29, 13, 17, 7, 88, DateTimeKind.Utc).AddTicks(5895));
+                        .HasDefaultValue(new DateTime(2023, 4, 29, 13, 15, 29, 682, DateTimeKind.Utc).AddTicks(8552));
 
                     b.HasKey("Userid_Date");
 

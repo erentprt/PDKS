@@ -28,7 +28,7 @@ public class UpdateDepartmentCommand:IRequest<UpdatedDepartmentResponse>
         public async Task<UpdatedDepartmentResponse> Handle(UpdateDepartmentCommand request, CancellationToken cancellationToken)
         {
             Department? department = await _departmentRepository.GetAsync(x => x.Id == request.Id);
-            _departmentBusinessRules.BrandIdShouldExistWhenSelected(department);
+            _departmentBusinessRules.DepartmentIdShouldExistWhenSelected(department);
 
             _mapper.Map(request, department);
             await _departmentBusinessRules.DepartmentNameCanNotBeDuplicatedWhenUpdated(department);

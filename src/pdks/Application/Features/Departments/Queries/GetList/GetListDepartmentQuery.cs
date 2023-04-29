@@ -12,8 +12,7 @@ public class GetListDepartmentQuery : IRequest<GetListResponse<GetListDepartment
     public PageRequest PageRequest { get; set; }
 
 
-    public class
-        GetListDepartmentQueryHandler : IRequestHandler<GetListDepartmentQuery,
+    public class GetListDepartmentQueryHandler : IRequestHandler<GetListDepartmentQuery,
             GetListResponse<GetListDepartmentListItemDto>>
     {
         private readonly IDepartmentRepository _departmentRepository;

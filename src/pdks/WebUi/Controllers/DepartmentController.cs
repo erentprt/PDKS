@@ -1,5 +1,4 @@
-﻿using System.Dynamic;
-using Application.Features.Departments.Commands.Create;
+﻿using Application.Features.Departments.Commands.Create;
 using Application.Features.Departments.Commands.Delete;
 using Application.Features.Departments.Commands.Update;
 using Application.Features.Departments.Queries.GetById;

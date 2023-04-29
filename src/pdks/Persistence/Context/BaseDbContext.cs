@@ -12,6 +12,7 @@ public class BaseDbContext:DbContext
     protected IConfiguration Configuration { get; set; }
     public DbSet<Department> Departments { get; set; }
     public DbSet<Employee> Employees { get; set; }
+    public DbSet<LoginAndExit> LoginAndExits { get; set; }
 
     
     

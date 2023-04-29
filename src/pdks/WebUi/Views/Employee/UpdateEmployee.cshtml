@@ -1,0 +1,64 @@
+﻿@model Application.Features.Employees.Queries.GetById.GetByIdEmployeeResponse
+
+@{
+    ViewBag.Title = "Çalışan Bilgilerini Güncelleme";
+    Layout = "_Layout";
+}
+
+@using (Html.BeginForm("UpdateEmployee", "Employee", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.Id)
+    <div class="form-group">
+        <label for="isim">İsim:</label>
+        @Html.TextBox("Name", null, new { @class = "form-control", @id = "isim" })
+    </div>
+    <div class="form-group">
+        <label for="Surname">Soyisim:</label>
+        @Html.TextBox("Surname", null, new { @class = "form-control", @id = "surname" })
+    </div>
+    <div class="form-group">
+        <label for="DepartmentId">Departman:</label>
+        @Html.TextBox("DepartmentId", null, new { @class = "form-control", @id = "DepartmentId" })
+    </div>
+    <div class="form-group">
+        <label for="EmployeeCode">Personel Kodu:</label>
+        @Html.TextBox("EmployeeCode", null, new { @class = "form-control", @id = "EmployeeCode" })
+    </div>
+    <div class="form-group">
+        <label for="IdentityNumber">Kimlik Numarası:</label>
+        @Html.TextBox("IdentityNumber", null, new { @class = "form-control", @id = "IdentityNumber" })
+    </div>
+    <div class="form-group">
+        <label for="PhoneNumber">Telefon:</label>
+        @Html.TextBox("PhoneNumber", null, new { @class = "form-control", @id = "PhoneNumber" })
+    </div>
+    <div class="form-group">
+        <label for="Email">E-Posta:</label>
+        @Html.TextBox("Email", null, new { @class = "form-control", @id = "Email", @type = "email" })
+    </div>
+    <div class="form-group">
+        <label for="DateOfBirth">Doğum Tarihi:</label>
+        @Html.TextBox("DateOfBirth", null, new { @class = "form-control", @id = "DateOfBirth", @type = "date" })
+    </div>
+    <div class="form-group">
+        <label for="Position">Pozisyon:</label>
+        @Html.TextBox("Position", null, new { @class = "form-control", @id = "Position" })
+    </div>
+    <div class="form-group">
+        <label for="HourlySalary">Saatlik Ücret</label>
+        @Html.TextBox("HourlySalary", null, new { @class = "form-control", @id = "HourlySalary" })
+    </div>
+    <div class="form-group">
+        <label for="MonthlySalary">Aylık Ücret</label>
+        @Html.TextBox("MonthlySalary", null, new { @class = "form-control", @id = "MonthlySalary" })
+    </div>
+    <div class="form-group">
+        <label for="HomeAddress">Ev Adresi:</label>
+        @Html.TextArea("HomeAddress", null, new { @class = "form-control", @id = "HomeAddress", @rows = "5" })
+    </div>
+
+    <div>
+        <button type="submit" class="btn btn-primary">Güncelle</button>
+    </div>
+    
+}
