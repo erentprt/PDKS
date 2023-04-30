@@ -67,6 +67,7 @@ public class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
                 false,
                 27,
                 8100,
+                0,
                 0),
             new(
                 2,
@@ -88,6 +89,7 @@ public class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
                 false,
                 30,
                 9000,
+                0,
                 0),
             new(
                 3,
@@ -109,6 +111,7 @@ public class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
                 false,
                 40,
                 12000,
+                0,
                 0),
             
             new(
@@ -131,6 +134,7 @@ public class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
                 false,
                 40,
                 12000,
+                0,
                 0),
             new(
                 5,
@@ -152,6 +156,7 @@ public class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
                 false,
                 40,
                 12000,
+                0,
                 0),
             
         };

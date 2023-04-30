@@ -23,6 +23,7 @@ public class Employee : Entity
     public double? HourlySalary { get; set; }
     public double? MonthlySalary { get; set; }
     public double? AllTimeSalary { get; set; }
+    public int  TotalWorkTime { get; set; }
     public Department Department { get; set; }
     public ICollection<LoginAndExit> LoginAndExits { get; set; }
 
@@ -31,7 +32,7 @@ public class Employee : Entity
         LoginAndExits = new HashSet<LoginAndExit>();
     }
 
-    public Employee(int id, int departmentId, string employeeCode, string name, string surname, string ıdentityNumbeer, string phoneNumber, string email, string? homeAddress, DateTime dateOfBirth, string position, bool? status, DateTime dateOfEmployment, DateTime? dateOfTermination, string? terminationReason, string? terminationDescription, bool atWork, double? hourlySalary, double? monthlySalary,double allTimeSalary) : base(id)
+    public Employee(int id, int departmentId, string employeeCode, string name, string surname, string ıdentityNumbeer, string phoneNumber, string email, string? homeAddress, DateTime dateOfBirth, string position, bool? status, DateTime dateOfEmployment, DateTime? dateOfTermination, string? terminationReason, string? terminationDescription, bool atWork, double? hourlySalary, double? monthlySalary,double allTimeSalary,int totalWorkTime) : base(id)
     {
         DepartmentId = departmentId;
         EmployeeCode = employeeCode;
@@ -52,5 +53,6 @@ public class Employee : Entity
         HourlySalary = hourlySalary;
         MonthlySalary = monthlySalary;
         AllTimeSalary = allTimeSalary;
+        TotalWorkTime = totalWorkTime;
     }
 } 

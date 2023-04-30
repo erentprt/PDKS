@@ -11,20 +11,18 @@
       <Folder Include="Features\Departments\Validations" />
       <Folder Include="Features\Employees\Queries\GetListByDynamic" />
       <Folder Include="Features\Employees\Validations" />
-      <Folder Include="Features\EMPTYCQRS\Commands\Create" />
-      <Folder Include="Features\EMPTYCQRS\Commands\Delete" />
-      <Folder Include="Features\EMPTYCQRS\Commands\Update" />
-      <Folder Include="Features\EMPTYCQRS\Constants" />
-      <Folder Include="Features\EMPTYCQRS\Queries\GetById" />
-      <Folder Include="Features\EMPTYCQRS\Queries\GetList" />
-      <Folder Include="Features\EMPTYCQRS\Queries\GetListByDynamic" />
-      <Folder Include="Features\EMPTYCQRS\Rules" />
-      <Folder Include="Features\EMPTYCQRS\Validations" />
-      <Folder Include="Features\LoginAndExits\Constants" />
+      <Folder Include="Features\ZZEMPTYCQRS\Commands\Create" />
+      <Folder Include="Features\ZZEMPTYCQRS\Commands\Delete" />
+      <Folder Include="Features\ZZEMPTYCQRS\Commands\Update" />
+      <Folder Include="Features\ZZEMPTYCQRS\Constants" />
+      <Folder Include="Features\ZZEMPTYCQRS\Queries\GetById" />
+      <Folder Include="Features\ZZEMPTYCQRS\Queries\GetList" />
+      <Folder Include="Features\ZZEMPTYCQRS\Queries\GetListByDynamic" />
+      <Folder Include="Features\ZZEMPTYCQRS\Rules" />
+      <Folder Include="Features\ZZEMPTYCQRS\Validations" />
       <Folder Include="Features\LoginAndExits\Queries\GetById" />
       <Folder Include="Features\LoginAndExits\Queries\GetList" />
       <Folder Include="Features\LoginAndExits\Queries\GetListByDynamic" />
-      <Folder Include="Features\LoginAndExits\Rules" />
       <Folder Include="Features\LoginAndExits\Validations" />
     </ItemGroup>
 

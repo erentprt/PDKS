@@ -92,7 +92,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateOfEmployment")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 4, 29, 13, 17, 7, 87, DateTimeKind.Utc).AddTicks(8036));
+                        .HasDefaultValue(new DateTime(2023, 4, 30, 0, 18, 10, 514, DateTimeKind.Utc).AddTicks(4098));
 
                     b.Property<DateTime?>("DateOfTermination")
                         .HasColumnType("datetime2");
@@ -158,6 +158,9 @@ namespace Persistence.Migrations
                         .HasMaxLength(99)
                         .HasColumnType("nvarchar(99)");
 
+                    b.Property<int>("TotalWorkTime")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
@@ -185,7 +188,7 @@ namespace Persistence.Migrations
                             AtWork = false,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(2003, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfEmployment = new DateTime(2023, 4, 29, 13, 17, 7, 88, DateTimeKind.Utc).AddTicks(2172),
+                            DateOfEmployment = new DateTime(2023, 4, 30, 0, 18, 10, 514, DateTimeKind.Utc).AddTicks(8941),
                             DepartmentId = 1,
                             Email = "employee1@test.com",
                             EmployeeCode = "EMP001",
@@ -197,7 +200,8 @@ namespace Persistence.Migrations
                             PhoneNumber = "5555555555",
                             Position = "Software Developer",
                             Status = true,
-                            Surname = "Doe"
+                            Surname = "Doe",
+                            TotalWorkTime = 0
                         },
                         new
                         {
@@ -206,7 +210,7 @@ namespace Persistence.Migrations
                             AtWork = false,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(1990, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfEmployment = new DateTime(2023, 4, 29, 13, 17, 7, 88, DateTimeKind.Utc).AddTicks(2188),
+                            DateOfEmployment = new DateTime(2023, 4, 30, 0, 18, 10, 514, DateTimeKind.Utc).AddTicks(8958),
                             DepartmentId = 1,
                             Email = "employee2@test.com",
                             EmployeeCode = "EMP002",
@@ -218,7 +222,8 @@ namespace Persistence.Migrations
                             PhoneNumber = "5555555555",
                             Position = "Software Developer",
                             Status = true,
-                            Surname = "Lopez"
+                            Surname = "Lopez",
+                            TotalWorkTime = 0
                         },
                         new
                         {
@@ -227,7 +232,7 @@ namespace Persistence.Migrations
                             AtWork = false,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(1990, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfEmployment = new DateTime(2023, 4, 29, 13, 17, 7, 88, DateTimeKind.Utc).AddTicks(2192),
+                            DateOfEmployment = new DateTime(2023, 4, 30, 0, 18, 10, 514, DateTimeKind.Utc).AddTicks(8961),
                             DepartmentId = 1,
                             Email = "employee3@test.com",
                             EmployeeCode = "EMP003",
@@ -239,7 +244,8 @@ namespace Persistence.Migrations
                             PhoneNumber = "5555555555",
                             Position = "Database Designer",
                             Status = true,
-                            Surname = "Lima"
+                            Surname = "Lima",
+                            TotalWorkTime = 0
                         },
                         new
                         {
@@ -248,7 +254,7 @@ namespace Persistence.Migrations
                             AtWork = false,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(1990, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfEmployment = new DateTime(2023, 4, 29, 13, 17, 7, 88, DateTimeKind.Utc).AddTicks(2197),
+                            DateOfEmployment = new DateTime(2023, 4, 30, 0, 18, 10, 514, DateTimeKind.Utc).AddTicks(8964),
                             DepartmentId = 2,
                             Email = "employee4@test.com",
                             EmployeeCode = "EMP004",
@@ -260,7 +266,8 @@ namespace Persistence.Migrations
                             PhoneNumber = "5555555555",
                             Position = "Secretary",
                             Status = true,
-                            Surname = "Tugay"
+                            Surname = "Tugay",
+                            TotalWorkTime = 0
                         },
                         new
                         {
@@ -269,7 +276,7 @@ namespace Persistence.Migrations
                             AtWork = false,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(1990, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfEmployment = new DateTime(2023, 4, 29, 13, 17, 7, 88, DateTimeKind.Utc).AddTicks(2200),
+                            DateOfEmployment = new DateTime(2023, 4, 30, 0, 18, 10, 514, DateTimeKind.Utc).AddTicks(8966),
                             DepartmentId = 2,
                             Email = "employee5@test.com",
                             EmployeeCode = "EMP005",
@@ -281,7 +288,8 @@ namespace Persistence.Migrations
                             PhoneNumber = "5555555555",
                             Position = "Secretary",
                             Status = true,
-                            Surname = "Terzioğlu"
+                            Surname = "Terzioğlu",
+                            TotalWorkTime = 0
                         });
                 });
 
@@ -291,8 +299,9 @@ namespace Persistence.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("EmployeeCode")
-                        .HasColumnType("int");
+                    b.Property<string>("EmployeeCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<DateTime?>("ExitTime")
                         .HasColumnType("datetime2");
@@ -300,7 +309,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("LoginTime")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 4, 29, 13, 17, 7, 88, DateTimeKind.Utc).AddTicks(5895));
+                        .HasDefaultValue(new DateTime(2023, 4, 30, 0, 18, 10, 515, DateTimeKind.Utc).AddTicks(4081));
 
                     b.HasKey("Userid_Date");
 
@@ -325,6 +334,7 @@ namespace Persistence.Migrations
                     b.HasOne("Domain.Entities.Employee", "Employee")
                         .WithMany("LoginAndExits")
                         .HasForeignKey("EmployeeCode")
+                        .HasPrincipalKey("EmployeeCode")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 

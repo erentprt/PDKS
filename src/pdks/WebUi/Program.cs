@@ -1,12 +1,22 @@
 using Application;
 using Core.Security;
 using Infrastructure;
+using NToastNotify;
 using Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+builder.Services.AddControllersWithViews().AddNToastNotifyToastr(new ToastrOptions()
+{
+    PositionClass = ToastPositions.TopRight,
+    TimeOut = 5000,
+    ProgressBar = true,
+    CloseButton = true,
+    PreventDuplicates = true,
+    NewestOnTop = true,
+}).AddRazorRuntimeCompilation();
+
 builder.Services.AddApplicationServices();
 builder.Services.AddSecurityServices();
 builder.Services.AddPersistenceServices(builder.Configuration);
@@ -24,6 +34,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseNToastNotify();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
