@@ -23,18 +23,15 @@ public class LoginOrExitController:BaseController
     public async Task<IActionResult> LoginOrExitCompany(LoginToCompanyCommand command)
     {
         var response = await Mediator.Send(command);
-        if (response == null)
-        {
-            _toastNotification.AddSuccessToastMessage($"{command.EmployeeCode} logged in successfully");
-        }
-        else if(response.Userid_Date != null)
-        {
-            _toastNotification.AddSuccessToastMessage($"{response.EmployeeCode} logged out successfully");
-        }
-        else
+        if (response.Userid_Date == null)
         {
             _toastNotification.AddErrorToastMessage("Something went wrong");
         }
+        else
+        {
+            _toastNotification.AddSuccessToastMessage($"{response.EmployeeCode} logged out successfully");
+        }
+
         return View("Index");
     }
 }

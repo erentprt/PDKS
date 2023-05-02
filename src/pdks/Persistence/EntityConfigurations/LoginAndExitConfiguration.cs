@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Persistence.EntityConfigurations;
 
-public class LoginAndExitConfigurations:IEntityTypeConfiguration<LoginAndExit>
+public class LoginAndExitConfiguration:IEntityTypeConfiguration<LoginAndExit>
 {
     public void Configure(EntityTypeBuilder<LoginAndExit> builder)
     {

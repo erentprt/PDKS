@@ -1,5 +1,7 @@
 ﻿using System.Reflection;
+using Application.Services.DailyReportService;
 using Application.Services.EmployeeService;
+using Application.Services.Repositories;
 using Core.Application.Pipelines.Authorization;
 using Core.Application.Pipelines.Caching;
 using Core.Application.Pipelines.Logging;
@@ -36,6 +38,7 @@ public static class ApplicationServiceRegistration
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
         services.AddScoped<IEmployeeService, EmployeeManager>();
+        services.AddScoped<IDailyReportService, DailyReportManager>();
 
         services.AddSingleton<IMailService, MailKitMailService>();
         services.AddSingleton<LoggerServiceBase, FileLogger>();

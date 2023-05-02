@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Application.Features.DailyReports.Queries.GetByDate.GetByDateDailyReportQueryResponse
+@{
     ViewData["Title"] = "Dashboard";
 }
 
@@ -8,11 +9,41 @@
       <div class="card-body">
         <div class="row align-items-center">
           <div class="col-3">
+            <i class="fas fa-user-plus fa-3x"></i>
+          </div>
+          <div class="col-9">
+            <div class="text-uppercase mb-2">İçerideki Çalışan Sayısı</div>
+            <div class="h3 mb-0 font-weight-bold">@Model.NumberOfEmployeesInTheWorkplace</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mt-2">
+    <div class="card">
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col-3">
+            <i class="fa-solid fa-user-xmark fa-3x"></i>
+            </div>
+          <div class="col-9">
+            <div class="text-uppercase mb-2">Gelmeyen Çalışan Sayısı</div>
+            <div class="h3 mb-0 font-weight-bold">@Model.NumberOfEmployeesNotAtWork</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mt-2">
+    <div class="card">
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col-3">
             <i class="fas fa-users fa-3x"></i>
           </div>
           <div class="col-9">
-            <div class="text-uppercase mb-2">Total Users</div>
-            <div class="h3 mb-0 font-weight-bold">152</div>
+            <div class="text-uppercase mb-2">Toplam Çalışan Sayısı</div>
+            <div class="h3 mb-0 font-weight-bold">@Model.TotalNumberOfEmployees</div>
           </div>
         </div>
       </div>
@@ -26,38 +57,8 @@
             <i class="fas fa-money-bill-alt fa-3x"></i>
           </div>
           <div class="col-9">
-            <div class="text-uppercase mb-2">Total Revenue</div>
-            <div class="h3 mb-0 font-weight-bold">$15,320</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mt-2">
-    <div class="card">
-      <div class="card-body">
-        <div class="row align-items-center">
-          <div class="col-3">
-            <i class="fas fa-money-bill-alt fa-3x"></i>
-          </div>
-          <div class="col-9">
-            <div class="text-uppercase mb-2">Total Revenue</div>
-            <div class="h3 mb-0 font-weight-bold">$15,320</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mt-2">
-    <div class="card">
-      <div class="card-body">
-        <div class="row align-items-center">
-          <div class="col-3">
-            <i class="fas fa-money-bill-alt fa-3x"></i>
-          </div>
-          <div class="col-9">
-            <div class="text-uppercase mb-2">Total Revenue</div>
-            <div class="h3 mb-0 font-weight-bold">$15,320</div>
+            <div class="text-uppercase mb-2">Bugün Ödenecek Para</div>
+            <div class="h3 mb-0 font-weight-bold">@Model.MoneyPaidToday</div>
           </div>
         </div>
       </div>

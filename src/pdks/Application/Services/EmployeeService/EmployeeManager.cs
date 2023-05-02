@@ -41,8 +41,11 @@ public class EmployeeManager : IEmployeeService
         await _employeeRepository.UpdateAsync(employee);
         return employee;
     }
-    
-    
-    
-    
+
+    public async Task<int> GetEmployeeCount()
+    {
+        var employees = await _employeeRepository.GetListAsync();
+        return employees.Count;
+        
+    }
 }
