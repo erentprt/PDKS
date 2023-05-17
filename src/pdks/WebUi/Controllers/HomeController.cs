@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics;
-using Application.Features.DailyReports.Queries.GetByDate;
+using Application.Features.Dashboards.Queries.GetDashboard;
 using Microsoft.AspNetCore.Mvc;
 using WebUi.Models;
 
@@ -14,7 +14,7 @@ public class HomeController : BaseController
         _logger = logger;
     }
 
-    public async Task<IActionResult> Index(GetByDateDailyReportQuery query)
+    public async Task<IActionResult> Index(GetDashboardQuery query)
     {
         var dailyReport = await Mediator.Send(query);
         return View("Index",dailyReport);

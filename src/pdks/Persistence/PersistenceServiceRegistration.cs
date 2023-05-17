@@ -19,7 +19,10 @@ public static class PersistenceServiceRegistration
         services.AddScoped<IDepartmentRepository, DepartmentRepository>();
         services.AddScoped<ILoginAndExitRepository, LoginAndExitRepository>();
         services.AddScoped<IDailyReportRepository, DailyReportRepository>();
-        //services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+        
+        
+        services.AddScoped<IDashboardRepository,DashboardRepository>();
+    //services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
         return services;
     }

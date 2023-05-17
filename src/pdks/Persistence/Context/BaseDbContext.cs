@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using Core.Persistence.Repositories;
 using Domain.Entities;
+using Domain.SqlViews;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.Configuration;
@@ -10,12 +11,14 @@ namespace Persistence.Context;
 public class BaseDbContext:DbContext
 {
     protected IConfiguration Configuration { get; set; }
+    
+    //Entities
     public DbSet<Department> Departments { get; set; }
     public DbSet<Employee> Employees { get; set; }
     public DbSet<LoginAndExit> LoginAndExits { get; set; }
 
-    
-    
+    //Views
+    public DbSet<DashboardStatistic> DashboardStatistics { get; set; }
     
     
     public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration)

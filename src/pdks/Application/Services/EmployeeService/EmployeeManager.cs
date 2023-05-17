@@ -42,7 +42,7 @@ public class EmployeeManager : IEmployeeService
         return employee;
     }
 
-    public async Task<int> GetEmployeeCount()
+    public async Task<int> GetAllEmployeeCount()
     {
         var employees = await _employeeRepository.GetListAsync();
         return employees.Count;

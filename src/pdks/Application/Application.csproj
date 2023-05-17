@@ -12,6 +12,12 @@
       <Folder Include="Features\DailyReports\Queries\GetList" />
       <Folder Include="Features\DailyReports\Queries\GetListByDynamic" />
       <Folder Include="Features\DailyReports\Validations" />
+      <Folder Include="Features\Dashboards\Commands\Create" />
+      <Folder Include="Features\Dashboards\Commands\Delete" />
+      <Folder Include="Features\Dashboards\Commands\Update" />
+      <Folder Include="Features\Dashboards\Constants" />
+      <Folder Include="Features\Dashboards\Rules" />
+      <Folder Include="Features\Dashboards\Validations" />
       <Folder Include="Features\Departments\Queries\GetListByDynamic" />
       <Folder Include="Features\Departments\Validations" />
       <Folder Include="Features\Employees\Queries\GetListByDynamic" />

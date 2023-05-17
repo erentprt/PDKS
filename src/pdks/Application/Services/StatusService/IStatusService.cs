@@ -1,8 +1,8 @@
 ﻿using Domain.Entities;
 
-namespace Application.Services.DailyReportService;
+namespace Application.Services.StatusService;
 
-public interface IDailyReportService
+public interface IStatusService
 {
     public Task<DailyReport> UpdateNumberOfEmployeesInTheWorkplace(DateTime date);
     public Task<DailyReport> UpdateNumberOfEmployeesNotAtWork(DateTime date);

@@ -1,14 +1,15 @@
-﻿using Application.Services.Repositories;
+﻿using Application.Services.DailyReportService;
+using Application.Services.Repositories;
 using Domain.Entities;
 
-namespace Application.Services.DailyReportService;
+namespace Application.Services.StatusService;
 
-public class DailyReportManager:IDailyReportService
+public class StatusManager:IStatusService
 {
     private readonly IDailyReportRepository _dailyReportRepository;
 
 
-    public DailyReportManager(IDailyReportRepository dailyReportRepository)
+    public StatusManager(IDailyReportRepository dailyReportRepository)
     {
         _dailyReportRepository = dailyReportRepository;
     }

@@ -1,4 +1,5 @@
 using Application;
+using Application.Services.BackgroundServices;
 using Core.Security;
 using Infrastructure;
 using NToastNotify;
@@ -22,7 +23,7 @@ builder.Services.AddSecurityServices();
 builder.Services.AddPersistenceServices(builder.Configuration);
 builder.Services.AddInfrastructureServices();
 builder.Services.AddHttpContextAccessor();
-
+builder.Services.AddHostedService<DailyReportCreator>();
 
 var app = builder.Build();
 

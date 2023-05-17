@@ -32,7 +32,7 @@ public class CreateDailyReportCommandHandler : IRequestHandler<CreateDailyReport
     {
         var dateNow = DateTime.UtcNow;
         await _dailyReportBusinessRules.DailyReportExists(dateNow);
-        var totalEmployee = await _employeeService.GetEmployeeCount();
+        var totalEmployee = await _employeeService.GetAllEmployeeCount();
         DailyReport dailyReport = new DailyReport();
         dailyReport.TotalNumberOfEmployees = totalEmployee;
         dailyReport.NumberOfEmployeesNotAtWork = totalEmployee;

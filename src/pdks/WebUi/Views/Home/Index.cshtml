@@ -1,4 +1,4 @@
-﻿@model Application.Features.DailyReports.Queries.GetByDate.GetByDateDailyReportQueryResponse
+﻿@model Application.Features.Dashboards.Queries.GetDashboard.GetDashboardQueryResponse
 @{
     ViewData["Title"] = "Dashboard";
 }
@@ -43,7 +43,7 @@
           </div>
           <div class="col-9">
             <div class="text-uppercase mb-2">Toplam Çalışan Sayısı</div>
-            <div class="h3 mb-0 font-weight-bold">@Model.TotalNumberOfEmployees</div>
+            <div class="h3 mb-0 font-weight-bold">@Model.TotalEmployees</div>
           </div>
         </div>
       </div>
@@ -57,8 +57,8 @@
             <i class="fas fa-money-bill-alt fa-3x"></i>
           </div>
           <div class="col-9">
-            <div class="text-uppercase mb-2">Bugün Ödenecek Para</div>
-            <div class="h3 mb-0 font-weight-bold">@Model.MoneyPaidToday</div>
+            <div class="text-uppercase mb-2">Toplam Ödenen Para</div>
+            <div class="h3 mb-0 font-weight-bold">@Model.AllTimeSalary ₺</div>
           </div>
         </div>
       </div>

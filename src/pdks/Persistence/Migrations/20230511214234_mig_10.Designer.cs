@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence.Context;
 
@@ -11,9 +12,11 @@ using Persistence.Context;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(BaseDbContext))]
-    partial class BaseDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230511214234_mig_10")]
+    partial class mig10
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -128,7 +131,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateOfEmployment")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 5, 11, 23, 25, 57, 718, DateTimeKind.Utc).AddTicks(9208));
+                        .HasDefaultValue(new DateTime(2023, 5, 11, 21, 42, 34, 635, DateTimeKind.Utc).AddTicks(7359));
 
                     b.Property<DateTime?>("DateOfTermination")
                         .HasColumnType("datetime2");
@@ -224,7 +227,7 @@ namespace Persistence.Migrations
                             AtWork = false,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(2003, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfEmployment = new DateTime(2023, 5, 11, 23, 25, 57, 719, DateTimeKind.Utc).AddTicks(3060),
+                            DateOfEmployment = new DateTime(2023, 5, 11, 21, 42, 34, 636, DateTimeKind.Utc).AddTicks(976),
                             DepartmentId = 1,
                             Email = "employee1@test.com",
                             EmployeeCode = "EMP001",
@@ -246,7 +249,7 @@ namespace Persistence.Migrations
                             AtWork = false,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(1990, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfEmployment = new DateTime(2023, 5, 11, 23, 25, 57, 719, DateTimeKind.Utc).AddTicks(3077),
+                            DateOfEmployment = new DateTime(2023, 5, 11, 21, 42, 34, 636, DateTimeKind.Utc).AddTicks(990),
                             DepartmentId = 1,
                             Email = "employee2@test.com",
                             EmployeeCode = "EMP002",
@@ -268,7 +271,7 @@ namespace Persistence.Migrations
                             AtWork = false,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(1990, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfEmployment = new DateTime(2023, 5, 11, 23, 25, 57, 719, DateTimeKind.Utc).AddTicks(3080),
+                            DateOfEmployment = new DateTime(2023, 5, 11, 21, 42, 34, 636, DateTimeKind.Utc).AddTicks(992),
                             DepartmentId = 1,
                             Email = "employee3@test.com",
                             EmployeeCode = "EMP003",
@@ -290,7 +293,7 @@ namespace Persistence.Migrations
                             AtWork = false,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(1990, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfEmployment = new DateTime(2023, 5, 11, 23, 25, 57, 719, DateTimeKind.Utc).AddTicks(3083),
+                            DateOfEmployment = new DateTime(2023, 5, 11, 21, 42, 34, 636, DateTimeKind.Utc).AddTicks(994),
                             DepartmentId = 2,
                             Email = "employee4@test.com",
                             EmployeeCode = "EMP004",
@@ -312,7 +315,7 @@ namespace Persistence.Migrations
                             AtWork = false,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(1990, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfEmployment = new DateTime(2023, 5, 11, 23, 25, 57, 719, DateTimeKind.Utc).AddTicks(3086),
+                            DateOfEmployment = new DateTime(2023, 5, 11, 21, 42, 34, 636, DateTimeKind.Utc).AddTicks(996),
                             DepartmentId = 2,
                             Email = "employee5@test.com",
                             EmployeeCode = "EMP005",
@@ -345,32 +348,13 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("LoginTime")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 5, 11, 23, 25, 57, 719, DateTimeKind.Utc).AddTicks(6888));
+                        .HasDefaultValue(new DateTime(2023, 5, 11, 21, 42, 34, 636, DateTimeKind.Utc).AddTicks(4361));
 
                     b.HasKey("Userid_Date");
 
                     b.HasIndex("EmployeeCode");
 
                     b.ToTable("LoginAndExits", (string)null);
-                });
-
-            modelBuilder.Entity("Domain.SqlViews.DashboardStatistic", b =>
-                {
-                    b.Property<int>("NumberOfEmployeesInTheWorkplace")
-                        .HasColumnType("int");
-
-                    b.Property<int>("NumberOfEmployeesNotAtWork")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TotalEmployees")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TotalSalary")
-                        .HasColumnType("int");
-
-                    b.ToTable((string)null);
-
-                    b.ToView("vm_DashboardStatistics", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Employee", b =>
