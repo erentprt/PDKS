@@ -3,6 +3,8 @@ using Application.Features.Employees.Commands.Delete;
 using Application.Features.Employees.Commands.Update;
 using Application.Features.Employees.Queries.GetById;
 using Application.Features.Employees.Queries.GetList;
+using Application.Features.Employees.Queries.GetListAtWork;
+using Application.Features.Employees.Queries.GetListNotAtWork;
 using AutoMapper;
 using Core.Persistence.Paging;
 using Domain.Entities;
@@ -27,5 +29,12 @@ public class MappingProfiles:Profile
         
         CreateMap<Employee, UpdateEmployeeCommand>().ReverseMap();
         CreateMap<Employee, UpdatedEmployeeResponse>().ReverseMap();
+        
+        CreateMap<Employee, GetListAtWorkListItemDto>().ReverseMap();
+        CreateMap<IPaginate<Employee>, GetListResponse<GetListAtWorkListItemDto>>().ReverseMap();
+
+        CreateMap<Employee, GetListNotAtWorkListItemDto>().ReverseMap();
+        CreateMap<IPaginate<Employee>, GetListResponse<GetListNotAtWorkListItemDto>>().ReverseMap();
+
     }
 }

@@ -3,6 +3,8 @@ using Application.Features.Employees.Commands.Delete;
 using Application.Features.Employees.Commands.Update;
 using Application.Features.Employees.Queries.GetById;
 using Application.Features.Employees.Queries.GetList;
+using Application.Features.Employees.Queries.GetListAtWork;
+using Application.Features.Employees.Queries.GetListNotAtWork;
 using Core.Application.Requests;
 using Core.Persistence.Paging;
 using Microsoft.AspNetCore.Mvc;
@@ -49,6 +51,22 @@ public class EmployeeController : BaseController
         var departmentList = await Mediator.Send(new GetListEmployeeQuery() {PageRequest = new PageRequest(){Page = 0,PageSize = 5}});
         return View("Index",departmentList);
 
+    }
+    
+    [HttpGet]
+    public async Task<IActionResult> AtWork([FromQuery] PageRequest pageRequest)
+    {
+        GetListAtWorkQuery getListModelQuery = new() { PageRequest = new PageRequest(){Page = pageRequest.Page,PageSize = pageRequest.PageSize} };
+        GetListResponse<GetListAtWorkListItemDto> result = await Mediator.Send(getListModelQuery);
+        return View(result);
+    }
+    
+    [HttpGet]
+    public async Task<IActionResult> NotAtWork([FromQuery] PageRequest pageRequest)
+    {
+        GetListNotAtWorkQuery getListModelQuery = new() { PageRequest = new PageRequest(){Page = pageRequest.Page,PageSize = pageRequest.PageSize} };
+        GetListResponse<GetListNotAtWorkListItemDto> result = await Mediator.Send(getListModelQuery);
+        return View(result);
     }
 
 }

@@ -9,5 +9,6 @@ public interface IEmployeeService
     public Task<Employee> SetDailyExit(int id, bool atwork, double dailySalary, int dailyWorkTime);
     public Task<Employee> SetAtWork(int id, bool atwork);
     public Task<int> GetAllEmployeeCount();
-    
+    public Task UpdateAllEmployeeAtWorkFalse();
+
 }

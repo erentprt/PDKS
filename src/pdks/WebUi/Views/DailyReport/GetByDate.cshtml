@@ -1,0 +1,93 @@
+﻿@model Application.Features.DailyReports.Queries.GetByDate.GetByDateDailyReportQueryResponse
+@{
+    Layout = "_Layout";
+}
+
+@section Styles{
+    .table {
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-collapse: collapse;
+    }
+
+    .table th,
+    .table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .table tbody + tbody {
+    border-top: 2px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .btn {
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    }
+}
+<h3>İşe Gelenler</h3>
+<table class="table">
+    <thead>
+    <tr>
+        <th style="width: 5%">İsim</th>
+        <th style="width: 5%">Soyisim</th>
+        <th style="width: 12%">Telefon Numarası</th>
+        <th style="width: 12%">Çalışan Kodu</th>
+        <th style="width: 12%">Giriş Zamanı</th>
+        <th style="width: 12%">Çıkış Zamanı</th>
+    </tr>
+    </thead>
+    <tbody>
+    @{
+        foreach (var employee in Model.LoggedInEmployees)
+        {
+            var x = employee.LoginAndExits.FirstOrDefault(x=>x.EmployeeCode == employee.EmployeeCode);
+            <tr>
+                <td style="width: 20%">@employee.Name </td>
+                <td style="width: 20%">@employee.Surname</td>
+                <td style="width: 20%">@employee.PhoneNumber</td>
+                <td style="width: 20%">@employee.EmployeeCode</td>
+                <td style="width: 20%">@x.LoginTime</td>
+                <td style="width: 20%">@x.ExitTime</td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>
+
+
+<h3>İşe Gelmeyenler</h3>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th style="width: 5%">İsim</th>
+        <th style="width: 5%">Soyisim</th>
+        <th style="width: 12%">Telefon Numarası</th>
+        <th style="width: 12%">Çalışan Kodu</th>
+    </tr>
+    </thead>
+    <tbody>
+    @{
+        foreach (var employee in Model.NotLoggedInEmployees)
+        {
+            <tr>
+                <td style="width: 20%">@employee.Name </td>
+                <td style="width: 20%">@employee.Surname</td>
+                <td style="width: 20%">@employee.PhoneNumber</td>
+                <td style="width: 20%">@employee.EmployeeCode</td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>

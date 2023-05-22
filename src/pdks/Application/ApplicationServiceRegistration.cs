@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using Application.Services.DailyReportService;
 using Application.Services.EmployeeService;
+using Application.Services.LoginAndExitService;
 using Application.Services.StatusService;
 using Core.Application.Pipelines.Transaction;
 using Core.Application.Pipelines.Validation;
@@ -37,6 +38,7 @@ public static class ApplicationServiceRegistration
         services.AddScoped<IEmployeeService, EmployeeManager>();
         services.AddScoped<IDailyReportService, DailyReportManager>();
         services.AddScoped<IStatusService, StatusManager>();
+        services.AddScoped<ILoginAndExitService, LoginAndExitManager>();
 
         services.AddSingleton<IMailService, MailKitMailService>();
         services.AddSingleton<LoggerServiceBase, FileLogger>();

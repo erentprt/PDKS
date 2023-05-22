@@ -9,7 +9,6 @@
     <ItemGroup>
       <Folder Include="Features\DailyReports\Commands\Delete" />
       <Folder Include="Features\DailyReports\Commands\Update" />
-      <Folder Include="Features\DailyReports\Queries\GetList" />
       <Folder Include="Features\DailyReports\Queries\GetListByDynamic" />
       <Folder Include="Features\DailyReports\Validations" />
       <Folder Include="Features\Dashboards\Commands\Create" />

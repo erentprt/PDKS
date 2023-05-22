@@ -36,7 +36,6 @@ margin-left:0px;
 }
 }
 </style>
-
     </head>
 <body>
 
@@ -48,10 +47,10 @@ margin-left:0px;
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link text-white" href="#">Anasayfa</a>
+        <a class="nav-link text-white" href="/Home/">Anasayfa</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-light" href="#">Personeller</a>
+        <a class="nav-link text-light" href="/Employee/Index?Page=0&PageSize=5">Personeller</a>
       </li>
       <li class="nav-item">
         <a class="nav-link text-light" href="/Department/Index">Departmanlar</a>
@@ -75,7 +74,9 @@ margin-left:0px;
   <ul class="list-group mt-2">
     <li class="list-group-item "><a href="/Employee/Index?Page=0&PageSize=5">Personeller</a></li>
     <li class="list-group-item "><a href="/Department/Index">Departmanlar</a></li>
-    <li class="list-group-item"><a href="#">Raporlar</a></li>
+    <li class="list-group-item"><a href="/Employee/NotAtWork?Page=0&PageSize=5">Bügün İşe Gelmeyen Çalışanlar</a></li>
+    <li class="list-group-item"><a href="/Employee/AtWork?Page=0&PageSize=5">İçerideki Çalışanlar</a></li>
+    <li class="list-group-item"><a href="/DailyReport/Index?Page=0&PageSize=5">Raporlar</a></li>
     <li class="list-group-item"><a href="#">Ayarlar</a></li>
     <li class="list-group-item"><a href="#">Çıkış yap</a></li>
   </ul>

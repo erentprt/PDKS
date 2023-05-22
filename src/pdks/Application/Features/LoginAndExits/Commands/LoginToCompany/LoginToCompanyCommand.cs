@@ -52,11 +52,11 @@ public class LoginToCompanyCommandHandler : IRequestHandler<LoginToCompanyComman
         }
         else if (lae.ExitTime is null)
         {
-            await _employeeService.SetDailyExit(employee.Id, false,
+            await _employeeService.SetDailyExit(employee.Id, true,
                 (int)(date - lae.LoginTime).TotalHours * employee.HourlySalary!.Value,
                 (int)(date - lae.LoginTime).TotalHours);
             lae.ExitTime = date;
-            await _dailyReportService.UpdateNumberOfEmployeesNotAtWork(date.Date);
+            //await _dailyReportService.UpdateNumberOfEmployeesNotAtWork(date.Date);
             await _dailyReportService.UpdateMoneyPaidToday(date.Date,
                 (int)(date - lae.LoginTime).TotalHours * (int)employee.HourlySalary!.Value);
             await _loginAndExitRepository.UpdateAsync(lae);

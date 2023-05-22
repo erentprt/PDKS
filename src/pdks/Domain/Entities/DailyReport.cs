@@ -8,6 +8,7 @@ public class DailyReport:Entity
      public int NumberOfEmployeesNotAtWork{ get; set; }
      public int TotalNumberOfEmployees { get; set; }
      public int MoneyPaidToday { get; set; }
+     
      public DateTime Date { get; set; }
 
      public DailyReport()

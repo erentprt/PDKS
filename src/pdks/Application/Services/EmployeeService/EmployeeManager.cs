@@ -48,4 +48,16 @@ public class EmployeeManager : IEmployeeService
         return employees.Count;
         
     }
+    
+    public async Task UpdateAllEmployeeAtWorkFalse()
+    {
+        var employees = await _employeeRepository.GetListAsync();
+        var employeeList = new List<Employee>();
+        foreach (var employee in employees.Items)
+        {
+            employee.AtWork = false;
+            employeeList.Add(employee);
+        }
+        await _employeeRepository.UpdateRangeAsync(employeeList);
+    }
 }

@@ -1,6 +1,7 @@
 using Application;
 using Application.Services.BackgroundServices;
 using Core.Security;
+using Hangfire;
 using Infrastructure;
 using NToastNotify;
 using Persistence;
@@ -24,6 +25,9 @@ builder.Services.AddPersistenceServices(builder.Configuration);
 builder.Services.AddInfrastructureServices();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddHostedService<DailyReportCreator>();
+builder.Services.AddHangfire(x =>
+    x.UseSqlServerStorage(builder.Configuration.GetConnectionString("HangfireConnectionString")));
+builder.Services.AddHangfireServer();
 
 var app = builder.Build();
 
@@ -44,7 +48,7 @@ app.UseRouting();
 app.UseAuthorization();
 
 
-
+app.UseHangfireDashboard();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

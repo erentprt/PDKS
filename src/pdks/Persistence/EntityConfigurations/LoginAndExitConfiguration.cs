@@ -15,7 +15,6 @@ public class LoginAndExitConfiguration:IEntityTypeConfiguration<LoginAndExit>
         builder.Property(e => e.LoginTime).HasDefaultValue(DateTime.UtcNow);
         builder.Property(e => e.ExitTime);
         builder.Ignore(e => e.Id);
-        builder.Ignore(e => e.CreatedDate);
         builder.Ignore(e => e.UpdatedDate);
         
         builder.HasOne(e => e.Employee)
