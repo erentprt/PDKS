@@ -16,7 +16,8 @@ public class BaseDbContext:DbContext
     public DbSet<Department> Departments { get; set; }
     public DbSet<Employee> Employees { get; set; }
     public DbSet<LoginAndExit> LoginAndExits { get; set; }
-
+    public DbSet<Admin> Admins { get; set; }
+    
     //Views
     public DbSet<DashboardStatistic> DashboardStatistics { get; set; }
     

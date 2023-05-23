@@ -1,12 +1,13 @@
 using Application;
-using Application.Services.BackgroundServices;
-using Core.Security;
 using Hangfire;
 using Infrastructure;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using NToastNotify;
 using Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews().AddNToastNotifyToastr(new ToastrOptions()
@@ -19,15 +20,23 @@ builder.Services.AddControllersWithViews().AddNToastNotifyToastr(new ToastrOptio
     NewestOnTop = true,
 }).AddRazorRuntimeCompilation();
 
+
 builder.Services.AddApplicationServices();
-builder.Services.AddSecurityServices();
 builder.Services.AddPersistenceServices(builder.Configuration);
 builder.Services.AddInfrastructureServices();
 builder.Services.AddHttpContextAccessor();
-builder.Services.AddHostedService<DailyReportCreator>();
+
+
 builder.Services.AddHangfire(x =>
     x.UseSqlServerStorage(builder.Configuration.GetConnectionString("HangfireConnectionString")));
 builder.Services.AddHangfireServer();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+{
+    options.Cookie.Name = "NetCoreMvc.Auth";
+    options.LoginPath = "/Auth/Login";
+    options.AccessDeniedPath = "/Auth/Login";
+});
 
 var app = builder.Build();
 
@@ -45,6 +54,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 

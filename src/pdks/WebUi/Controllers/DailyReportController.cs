@@ -8,10 +8,11 @@ using AutoMapper;
 using Core.Application.Requests;
 using Domain.Entities;
 using Hangfire;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebUi.Controllers;
-
+[Authorize]
 public class DailyReportController:BaseController
 {
     private readonly IDashboardRepository _dashboardRepository;

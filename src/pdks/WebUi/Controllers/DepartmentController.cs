@@ -5,10 +5,12 @@ using Application.Features.Departments.Queries.GetById;
 using Application.Features.Departments.Queries.GetList;
 using Core.Application.Requests;
 using Core.Persistence.Paging;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebUi.Controllers;
 
+[Authorize]
 public class DepartmentController:BaseController
 {
     

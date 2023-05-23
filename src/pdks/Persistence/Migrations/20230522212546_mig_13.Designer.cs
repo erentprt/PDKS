@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence.Context;
 
@@ -11,9 +12,11 @@ using Persistence.Context;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(BaseDbContext))]
-    partial class BaseDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230522212546_mig_13")]
+    partial class mig13
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,40 +25,191 @@ namespace Persistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Domain.Entities.Admin", b =>
+            modelBuilder.Entity("Core.Security.Entities.OperationClaim", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Email")
+                    b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)")
+                        .HasColumnName("Name");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Admins", (string)null);
+                    b.HasIndex(new[] { "Name" }, "UK_OperationClaims_Name")
+                        .IsUnique();
+
+                    b.ToTable("OperationClaims", (string)null);
 
                     b.HasData(
                         new
                         {
                             Id = 1,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "admin@admin.com",
-                            Password = "admin123"
+                            Name = "admin"
                         });
+                });
+
+            modelBuilder.Entity("Core.Security.Entities.RefreshToken", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("Created");
+
+                    b.Property<string>("CreatedByIp")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("CreatedByIp");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("Expires")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("Expires");
+
+                    b.Property<string>("ReasonRevoked")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ReasonRevoked");
+
+                    b.Property<string>("ReplacedByToken")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ReplacedByToken");
+
+                    b.Property<DateTime?>("Revoked")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("Revoked");
+
+                    b.Property<string>("RevokedByIp")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("RevokedByIp");
+
+                    b.Property<string>("Token")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Token");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int")
+                        .HasColumnName("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("RefreshTokens", (string)null);
+                });
+
+            modelBuilder.Entity("Core.Security.Entities.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AuthenticatorType")
+                        .HasColumnType("int")
+                        .HasColumnName("AuthenticatorType");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)")
+                        .HasColumnName("Email");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("FirstName");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("LastName");
+
+                    b.Property<byte[]>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)")
+                        .HasColumnName("PasswordHash");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)")
+                        .HasColumnName("PasswordSalt");
+
+                    b.Property<bool>("Status")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true)
+                        .HasColumnName("Status");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex(new[] { "Email" }, "UK_Users_Email")
+                        .IsUnique();
+
+                    b.ToTable("Users", (string)null);
+                });
+
+            modelBuilder.Entity("Core.Security.Entities.UserOperationClaim", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("OperationClaimId")
+                        .HasColumnType("int")
+                        .HasColumnName("OperationClaimId");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int")
+                        .HasColumnName("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OperationClaimId");
+
+                    b.HasIndex(new[] { "UserId", "OperationClaimId" }, "UK_UserOperationClaims_UserId_OperationClaimId")
+                        .IsUnique();
+
+                    b.ToTable("UserOperationClaims", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.DailyReport", b =>
@@ -164,7 +318,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateOfEmployment")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 5, 23, 12, 51, 36, 790, DateTimeKind.Utc).AddTicks(8751));
+                        .HasDefaultValue(new DateTime(2023, 5, 22, 21, 25, 46, 18, DateTimeKind.Utc).AddTicks(4477));
 
                     b.Property<DateTime?>("DateOfTermination")
                         .HasColumnType("datetime2");
@@ -260,7 +414,7 @@ namespace Persistence.Migrations
                             AtWork = false,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(2003, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfEmployment = new DateTime(2023, 5, 23, 12, 51, 36, 791, DateTimeKind.Utc).AddTicks(3302),
+                            DateOfEmployment = new DateTime(2023, 5, 22, 21, 25, 46, 18, DateTimeKind.Utc).AddTicks(8756),
                             DepartmentId = 1,
                             Email = "employee1@test.com",
                             EmployeeCode = "EMP001",
@@ -282,7 +436,7 @@ namespace Persistence.Migrations
                             AtWork = false,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(1990, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfEmployment = new DateTime(2023, 5, 23, 12, 51, 36, 791, DateTimeKind.Utc).AddTicks(3325),
+                            DateOfEmployment = new DateTime(2023, 5, 22, 21, 25, 46, 18, DateTimeKind.Utc).AddTicks(8775),
                             DepartmentId = 1,
                             Email = "employee2@test.com",
                             EmployeeCode = "EMP002",
@@ -304,7 +458,7 @@ namespace Persistence.Migrations
                             AtWork = false,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(1990, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfEmployment = new DateTime(2023, 5, 23, 12, 51, 36, 791, DateTimeKind.Utc).AddTicks(3328),
+                            DateOfEmployment = new DateTime(2023, 5, 22, 21, 25, 46, 18, DateTimeKind.Utc).AddTicks(8778),
                             DepartmentId = 1,
                             Email = "employee3@test.com",
                             EmployeeCode = "EMP003",
@@ -326,7 +480,7 @@ namespace Persistence.Migrations
                             AtWork = false,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(1990, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfEmployment = new DateTime(2023, 5, 23, 12, 51, 36, 791, DateTimeKind.Utc).AddTicks(3330),
+                            DateOfEmployment = new DateTime(2023, 5, 22, 21, 25, 46, 18, DateTimeKind.Utc).AddTicks(8781),
                             DepartmentId = 2,
                             Email = "employee4@test.com",
                             EmployeeCode = "EMP004",
@@ -348,7 +502,7 @@ namespace Persistence.Migrations
                             AtWork = false,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(1990, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfEmployment = new DateTime(2023, 5, 23, 12, 51, 36, 791, DateTimeKind.Utc).AddTicks(3333),
+                            DateOfEmployment = new DateTime(2023, 5, 22, 21, 25, 46, 18, DateTimeKind.Utc).AddTicks(8783),
                             DepartmentId = 2,
                             Email = "employee5@test.com",
                             EmployeeCode = "EMP005",
@@ -384,7 +538,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("LoginTime")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 5, 23, 12, 51, 36, 791, DateTimeKind.Utc).AddTicks(7924));
+                        .HasDefaultValue(new DateTime(2023, 5, 22, 21, 25, 46, 19, DateTimeKind.Utc).AddTicks(3861));
 
                     b.HasKey("Userid_Date");
 
@@ -412,6 +566,36 @@ namespace Persistence.Migrations
                     b.ToView("vm_DashboardStatistics", (string)null);
                 });
 
+            modelBuilder.Entity("Core.Security.Entities.RefreshToken", b =>
+                {
+                    b.HasOne("Core.Security.Entities.User", "User")
+                        .WithMany("RefreshTokens")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Core.Security.Entities.UserOperationClaim", b =>
+                {
+                    b.HasOne("Core.Security.Entities.OperationClaim", "OperationClaim")
+                        .WithMany()
+                        .HasForeignKey("OperationClaimId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Core.Security.Entities.User", "User")
+                        .WithMany("UserOperationClaims")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("OperationClaim");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Domain.Entities.Employee", b =>
                 {
                     b.HasOne("Domain.Entities.Department", "Department")
@@ -433,6 +617,13 @@ namespace Persistence.Migrations
                         .IsRequired();
 
                     b.Navigation("Employee");
+                });
+
+            modelBuilder.Entity("Core.Security.Entities.User", b =>
+                {
+                    b.Navigation("RefreshTokens");
+
+                    b.Navigation("UserOperationClaims");
                 });
 
             modelBuilder.Entity("Domain.Entities.Department", b =>

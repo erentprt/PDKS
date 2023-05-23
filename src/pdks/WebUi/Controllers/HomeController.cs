@@ -1,10 +1,12 @@
 ﻿using System.Diagnostics;
 using Application.Features.Dashboards.Queries.GetDashboard;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebUi.Models;
 
 namespace WebUi.Controllers;
 
+[Authorize]
 public class HomeController : BaseController
 {
     private readonly ILogger<HomeController> _logger;

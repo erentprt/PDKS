@@ -6,10 +6,6 @@ using Application.Services.StatusService;
 using Core.Application.Pipelines.Transaction;
 using Core.Application.Pipelines.Validation;
 using Core.Application.Rules;
-using Core.CrossCuttingConcerns.Logging.Serilog;
-using Core.CrossCuttingConcerns.Logging.Serilog.Logger;
-using Core.Mailing;
-using Core.Mailing.MailKitImplementations;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -40,8 +36,6 @@ public static class ApplicationServiceRegistration
         services.AddScoped<IStatusService, StatusManager>();
         services.AddScoped<ILoginAndExitService, LoginAndExitManager>();
 
-        services.AddSingleton<IMailService, MailKitMailService>();
-        services.AddSingleton<LoggerServiceBase, FileLogger>();
 
         return services;
     }

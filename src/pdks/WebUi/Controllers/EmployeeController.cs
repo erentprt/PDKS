@@ -7,10 +7,12 @@ using Application.Features.Employees.Queries.GetListAtWork;
 using Application.Features.Employees.Queries.GetListNotAtWork;
 using Core.Application.Requests;
 using Core.Persistence.Paging;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebUi.Controllers;
 
+[Authorize]
 public class EmployeeController : BaseController
 {
     [HttpGet]
