@@ -2,6 +2,7 @@
 using Application.Features.Employees.Commands.Delete;
 using Application.Features.Employees.Commands.Update;
 using Application.Features.Employees.Queries.GetById;
+using Application.Features.Employees.Queries.GetByIdDetails;
 using Application.Features.Employees.Queries.GetList;
 using Application.Features.Employees.Queries.GetListAtWork;
 using Application.Features.Employees.Queries.GetListNotAtWork;
@@ -71,4 +72,10 @@ public class EmployeeController : BaseController
         return View(result);
     }
 
+    [HttpGet]
+    public async Task<IActionResult> GetByIdEmployeeDetails(int id)
+    {
+        var result = await Mediator.Send(new GetByIdEmployeeDetailsQuery(id));
+        return View("EmployeeDetails", result);
+    }
 }
