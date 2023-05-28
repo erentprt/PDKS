@@ -1,7 +1,7 @@
-﻿using Core.CrossCuttingConcerns.Exceptions.Handlers;
+﻿using Core.CrossCuttingConcers.Exceptions.Handlers;
 using Microsoft.AspNetCore.Http;
 
-namespace Core.CrossCuttingConcerns.Exceptions;
+namespace Core.CrossCuttingConcers.Exceptions;
 
 public class ExceptionMiddleware
 {

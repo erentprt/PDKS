@@ -1,8 +1,8 @@
-﻿using Core.CrossCuttingConcerns.Exceptions.Types;
+﻿using Core.CrossCuttingConcers.Exceptions.Types;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Core.CrossCuttingConcerns.Exceptions.HttpProblemDetails;
+namespace Core.CrossCuttingConcers.Exceptions.HttpProblemDetails;
 
 internal class ValidationProblemDetails : ProblemDetails
 {

@@ -1,5 +1,4 @@
 ﻿using System.Linq.Expressions;
-using Core.Persistence.Dynamic;
 using Core.Persistence.Paging;
 using Microsoft.EntityFrameworkCore.Query;
 
@@ -23,14 +22,7 @@ public interface IRepository<T> : IQuery<T>
         bool enableTracking = true
     );
 
-    IPaginate<T> GetListByDynamic(
-        DynamicQuery dynamic,
-        Expression<Func<T, bool>>? predicate = null,
-        Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null,
-        int index = 0,
-        int size = 10,
-        bool enableTracking = true
-    );
+
 
     bool Any(Expression<Func<T, bool>>? predicate = null, bool enableTracking = true);
     T Add(T entity);

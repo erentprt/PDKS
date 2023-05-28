@@ -1,4 +1,4 @@
-﻿namespace Core.CrossCuttingConcerns.Exceptions.Types;
+﻿namespace Core.CrossCuttingConcers.Exceptions.Types;
 
 public class ValidationException : Exception
 {

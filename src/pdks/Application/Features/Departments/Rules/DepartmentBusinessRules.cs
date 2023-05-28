@@ -1,7 +1,6 @@
 ﻿using Application.Features.Departments.Constants;
 using Application.Services.Repositories;
 using Core.Application.Rules;
-using Core.CrossCuttingConcerns.Exceptions.Types;
 using Core.CrossCuttingConcers.Exceptions.Types;
 using Domain.Entities;
 

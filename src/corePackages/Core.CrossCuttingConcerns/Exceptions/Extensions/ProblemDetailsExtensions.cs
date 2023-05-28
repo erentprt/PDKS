@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Core.CrossCuttingConcerns.Exceptions.Extensions;
+namespace Core.CrossCuttingConcers.Exceptions.Extensions;
 
 internal static class ProblemDetailsExtensions
 {
