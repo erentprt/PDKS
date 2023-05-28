@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Persistence.EntityConfigurations;
 
-public class AdminEntityConfiguration:IEntityTypeConfiguration<Admin>
+public class AdminEntityConfiguration : IEntityTypeConfiguration<Admin>
 {
     public void Configure(EntityTypeBuilder<Admin> builder)
     {
@@ -13,12 +13,21 @@ public class AdminEntityConfiguration:IEntityTypeConfiguration<Admin>
         builder.Property(x => x.Email).IsRequired();
         builder.Property(x => x.Password).IsRequired();
 
-        var admin = new Admin()
+        Admin[] adminSeeds =
         {
-            Id = 1,
-            Email = "admin@admin.com",
-            Password = "admin123"
+            new Admin()
+            {
+                Id = 1,
+                Email = "admin@admin.com",
+                Password = "admin123"
+            },
+            new Admin()
+            {
+                Id = 2,
+                Email = "admin2@admin.com",
+                Password = "admin123"
+            }
         };
-        builder.HasData(admin);
+        builder.HasData(adminSeeds);
     }
 }

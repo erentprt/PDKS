@@ -12,8 +12,8 @@ using Persistence.Context;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(BaseDbContext))]
-    [Migration("20230522212546_mig_13")]
-    partial class mig13
+    [Migration("20230527194615_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,191 +25,47 @@ namespace Persistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Core.Security.Entities.OperationClaim", b =>
+            modelBuilder.Entity("Domain.Entities.Admin", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("Id");
+                        .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)")
-                        .HasColumnName("Name");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex(new[] { "Name" }, "UK_OperationClaims_Name")
-                        .IsUnique();
-
-                    b.ToTable("OperationClaims", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "admin"
-                        });
-                });
-
-            modelBuilder.Entity("Core.Security.Entities.RefreshToken", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("Id");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("Created");
-
-                    b.Property<string>("CreatedByIp")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("CreatedByIp");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("Expires")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("Expires");
-
-                    b.Property<string>("ReasonRevoked")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("ReasonRevoked");
-
-                    b.Property<string>("ReplacedByToken")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("ReplacedByToken");
-
-                    b.Property<DateTime?>("Revoked")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("Revoked");
-
-                    b.Property<string>("RevokedByIp")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("RevokedByIp");
-
-                    b.Property<string>("Token")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("Token");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int")
-                        .HasColumnName("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("RefreshTokens", (string)null);
-                });
-
-            modelBuilder.Entity("Core.Security.Entities.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("Id");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("AuthenticatorType")
-                        .HasColumnType("int")
-                        .HasColumnName("AuthenticatorType");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)")
-                        .HasColumnName("Email");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FirstName")
+                    b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("FirstName");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("LastName");
-
-                    b.Property<byte[]>("PasswordHash")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)")
-                        .HasColumnName("PasswordHash");
-
-                    b.Property<byte[]>("PasswordSalt")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)")
-                        .HasColumnName("PasswordSalt");
-
-                    b.Property<bool>("Status")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(true)
-                        .HasColumnName("Status");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.HasIndex(new[] { "Email" }, "UK_Users_Email")
-                        .IsUnique();
+                    b.ToTable("Admins", (string)null);
 
-                    b.ToTable("Users", (string)null);
-                });
-
-            modelBuilder.Entity("Core.Security.Entities.UserOperationClaim", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("Id");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("OperationClaimId")
-                        .HasColumnType("int")
-                        .HasColumnName("OperationClaimId");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int")
-                        .HasColumnName("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OperationClaimId");
-
-                    b.HasIndex(new[] { "UserId", "OperationClaimId" }, "UK_UserOperationClaims_UserId_OperationClaimId")
-                        .IsUnique();
-
-                    b.ToTable("UserOperationClaims", (string)null);
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "admin@admin.com",
+                            Password = "admin123"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "admin2@admin.com",
+                            Password = "admin123"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.DailyReport", b =>
@@ -246,6 +102,35 @@ namespace Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("DailyReports", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Date = new DateTime(2023, 5, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            MoneyPaidToday = 1000,
+                            NumberOfEmployeesInTheWorkplace = 3,
+                            NumberOfEmployeesNotAtWork = 2,
+                            TotalNumberOfEmployees = 5
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Date = new DateTime(2023, 5, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            MoneyPaidToday = 1250,
+                            NumberOfEmployeesInTheWorkplace = 4,
+                            NumberOfEmployeesNotAtWork = 1,
+                            TotalNumberOfEmployees = 5
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Date = new DateTime(2023, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            MoneyPaidToday = 0,
+                            NumberOfEmployeesInTheWorkplace = 0,
+                            NumberOfEmployeesNotAtWork = 5,
+                            TotalNumberOfEmployees = 5
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Department", b =>
@@ -318,7 +203,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateOfEmployment")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 5, 22, 21, 25, 46, 18, DateTimeKind.Utc).AddTicks(4477));
+                        .HasDefaultValue(new DateTime(2023, 5, 27, 19, 46, 15, 217, DateTimeKind.Utc).AddTicks(7055));
 
                     b.Property<DateTime?>("DateOfTermination")
                         .HasColumnType("datetime2");
@@ -414,7 +299,7 @@ namespace Persistence.Migrations
                             AtWork = false,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(2003, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfEmployment = new DateTime(2023, 5, 22, 21, 25, 46, 18, DateTimeKind.Utc).AddTicks(8756),
+                            DateOfEmployment = new DateTime(2023, 5, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 1,
                             Email = "employee1@test.com",
                             EmployeeCode = "EMP001",
@@ -422,11 +307,11 @@ namespace Persistence.Migrations
                             HourlySalary = 27.0,
                             IdentityNumber = "12345678901",
                             MonthlySalary = 8100.0,
-                            Name = "John",
+                            Name = "Ali",
                             PhoneNumber = "5555555555",
                             Position = "Software Developer",
                             Status = true,
-                            Surname = "Doe",
+                            Surname = "ŞEN",
                             TotalWorkTime = 0
                         },
                         new
@@ -436,7 +321,7 @@ namespace Persistence.Migrations
                             AtWork = false,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(1990, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfEmployment = new DateTime(2023, 5, 22, 21, 25, 46, 18, DateTimeKind.Utc).AddTicks(8775),
+                            DateOfEmployment = new DateTime(2023, 5, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 1,
                             Email = "employee2@test.com",
                             EmployeeCode = "EMP002",
@@ -444,11 +329,11 @@ namespace Persistence.Migrations
                             HourlySalary = 30.0,
                             IdentityNumber = "36525478985",
                             MonthlySalary = 9000.0,
-                            Name = "Jennifer",
+                            Name = "Veli",
                             PhoneNumber = "5555555555",
                             Position = "Software Developer",
                             Status = true,
-                            Surname = "Lopez",
+                            Surname = "KANDEMİR",
                             TotalWorkTime = 0
                         },
                         new
@@ -458,7 +343,7 @@ namespace Persistence.Migrations
                             AtWork = false,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(1990, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfEmployment = new DateTime(2023, 5, 22, 21, 25, 46, 18, DateTimeKind.Utc).AddTicks(8778),
+                            DateOfEmployment = new DateTime(2023, 5, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 1,
                             Email = "employee3@test.com",
                             EmployeeCode = "EMP003",
@@ -466,11 +351,11 @@ namespace Persistence.Migrations
                             HourlySalary = 40.0,
                             IdentityNumber = "36569874785",
                             MonthlySalary = 12000.0,
-                            Name = "Adriana",
+                            Name = "Eren",
                             PhoneNumber = "5555555555",
                             Position = "Database Designer",
                             Status = true,
-                            Surname = "Lima",
+                            Surname = "TEPRET",
                             TotalWorkTime = 0
                         },
                         new
@@ -480,7 +365,7 @@ namespace Persistence.Migrations
                             AtWork = false,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(1990, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfEmployment = new DateTime(2023, 5, 22, 21, 25, 46, 18, DateTimeKind.Utc).AddTicks(8781),
+                            DateOfEmployment = new DateTime(2023, 5, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 2,
                             Email = "employee4@test.com",
                             EmployeeCode = "EMP004",
@@ -488,11 +373,11 @@ namespace Persistence.Migrations
                             HourlySalary = 40.0,
                             IdentityNumber = "32125696365",
                             MonthlySalary = 12000.0,
-                            Name = "Mine",
+                            Name = "Mehmet",
                             PhoneNumber = "5555555555",
                             Position = "Secretary",
                             Status = true,
-                            Surname = "Tugay",
+                            Surname = "ÇEVİK",
                             TotalWorkTime = 0
                         },
                         new
@@ -502,7 +387,7 @@ namespace Persistence.Migrations
                             AtWork = false,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(1990, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfEmployment = new DateTime(2023, 5, 22, 21, 25, 46, 18, DateTimeKind.Utc).AddTicks(8783),
+                            DateOfEmployment = new DateTime(2023, 5, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 2,
                             Email = "employee5@test.com",
                             EmployeeCode = "EMP005",
@@ -510,11 +395,11 @@ namespace Persistence.Migrations
                             HourlySalary = 40.0,
                             IdentityNumber = "78996369632",
                             MonthlySalary = 12000.0,
-                            Name = "Burçin",
+                            Name = "Hamza",
                             PhoneNumber = "5555555555",
                             Position = "Secretary",
                             Status = true,
-                            Surname = "Terzioğlu",
+                            Surname = "ERKURAN",
                             TotalWorkTime = 0
                         });
                 });
@@ -522,11 +407,12 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Domain.Entities.LoginAndExit", b =>
                 {
                     b.Property<string>("Userid_Date")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2023, 5, 27, 19, 46, 15, 218, DateTimeKind.Utc).AddTicks(4386));
 
                     b.Property<string>("EmployeeCode")
                         .IsRequired()
@@ -538,13 +424,64 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("LoginTime")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 5, 22, 21, 25, 46, 19, DateTimeKind.Utc).AddTicks(3861));
+                        .HasDefaultValue(new DateTime(2023, 5, 27, 19, 46, 15, 218, DateTimeKind.Utc).AddTicks(3913));
 
                     b.HasKey("Userid_Date");
 
                     b.HasIndex("EmployeeCode");
 
                     b.ToTable("LoginAndExits", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UseridDate = "1_2023-05-25",
+                            EmployeeCode = "EMP001",
+                            ExitTime = new DateTime(2023, 5, 25, 17, 0, 0, 0, DateTimeKind.Unspecified),
+                            LoginTime = new DateTime(2023, 5, 25, 8, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            UseridDate = "2_2023-05-25",
+                            EmployeeCode = "EMP002",
+                            ExitTime = new DateTime(2023, 5, 25, 17, 0, 0, 0, DateTimeKind.Unspecified),
+                            LoginTime = new DateTime(2023, 5, 25, 8, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            UseridDate = "3_2023-05-25",
+                            EmployeeCode = "EMP003",
+                            ExitTime = new DateTime(2023, 5, 25, 17, 0, 0, 0, DateTimeKind.Unspecified),
+                            LoginTime = new DateTime(2023, 5, 25, 8, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            UseridDate = "1_2023-05-26",
+                            EmployeeCode = "EMP001",
+                            ExitTime = new DateTime(2023, 5, 26, 17, 0, 0, 0, DateTimeKind.Unspecified),
+                            LoginTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            UseridDate = "2_2023-05-26",
+                            EmployeeCode = "EMP002",
+                            ExitTime = new DateTime(2023, 5, 26, 17, 0, 0, 0, DateTimeKind.Unspecified),
+                            LoginTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            UseridDate = "3_2023-05-26",
+                            EmployeeCode = "EMP003",
+                            ExitTime = new DateTime(2023, 5, 26, 17, 0, 0, 0, DateTimeKind.Unspecified),
+                            LoginTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            UseridDate = "4_2023-05-26",
+                            EmployeeCode = "EMP004",
+                            ExitTime = new DateTime(2023, 5, 26, 17, 0, 0, 0, DateTimeKind.Unspecified),
+                            LoginTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("Domain.SqlViews.DashboardStatistic", b =>
@@ -564,36 +501,6 @@ namespace Persistence.Migrations
                     b.ToTable((string)null);
 
                     b.ToView("vm_DashboardStatistics", (string)null);
-                });
-
-            modelBuilder.Entity("Core.Security.Entities.RefreshToken", b =>
-                {
-                    b.HasOne("Core.Security.Entities.User", "User")
-                        .WithMany("RefreshTokens")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Core.Security.Entities.UserOperationClaim", b =>
-                {
-                    b.HasOne("Core.Security.Entities.OperationClaim", "OperationClaim")
-                        .WithMany()
-                        .HasForeignKey("OperationClaimId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Core.Security.Entities.User", "User")
-                        .WithMany("UserOperationClaims")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("OperationClaim");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Domain.Entities.Employee", b =>
@@ -617,13 +524,6 @@ namespace Persistence.Migrations
                         .IsRequired();
 
                     b.Navigation("Employee");
-                });
-
-            modelBuilder.Entity("Core.Security.Entities.User", b =>
-                {
-                    b.Navigation("RefreshTokens");
-
-                    b.Navigation("UserOperationClaims");
                 });
 
             modelBuilder.Entity("Domain.Entities.Department", b =>

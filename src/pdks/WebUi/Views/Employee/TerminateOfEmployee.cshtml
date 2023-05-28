@@ -1,0 +1,31 @@
+﻿@model Application.Features.Employees.Queries.GetById.GetByIdEmployeeResponse
+
+@{
+    ViewBag.Title = "Çalışan Bilgilerini Güncelleme";
+    Layout = "_Layout";
+}
+
+
+<h3>@Model.Name @Model.Surname İşten Çıkarma / İşe Geri Alma</h3>
+
+@using (Html.BeginForm("TerminateOfEmployee", "Employee", FormMethod.Post))
+{
+        @Html.HiddenFor(x => x.Id)
+        <div class="form-group">
+            <label for="DateOfTermination">Ayrılma Tarihi:</label>
+            @Html.TextBox("DateOfTermination", ((DateTime)Model.DateOfTermination).ToString("yyyy-MM-dd"), new { @class = "form-control", @id = "DateOfTermination", @type = "date" })
+        </div>
+        <div class="form-group">
+            <label for="TerminationReason">Ayrılma Sebebi:</label>
+            @Html.TextBox("TerminationReason", null, new { @class = "form-control", @id = "HomeAddress", @rows = "5" })
+        </div>
+        <div class="form-group">
+            <label for="TerminationDescription">Açıklama:</label>
+            @Html.TextArea("TerminationDescription", null, new { @class = "form-control", @id = "HomeAddress", @rows = "5" })
+        </div>
+    <div>
+        <button type="submit" class="btn btn-primary">İşten Çıkar / Geri İşe Al</button>
+    </div>
+}
+<br/>
+<p>İşten çıkarma işlemi için bilgileri doldurunuz. İşe geri alma için bilgileri temizleyiniz.</p>

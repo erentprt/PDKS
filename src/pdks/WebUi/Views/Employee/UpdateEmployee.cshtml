@@ -38,7 +38,7 @@
     </div>
     <div class="form-group">
         <label for="DateOfBirth">Doğum Tarihi:</label>
-        @Html.TextBox("DateOfBirth", null, new { @class = "form-control", @id = "DateOfBirth", @type = "date" })
+        @Html.TextBox("DateOfBirth", Model.DateOfBirth.ToString("yyyy-MM-dd"), new { @class = "form-control", @id = "DateOfBirth", @type = "date" })
     </div>
     <div class="form-group">
         <label for="Position">Pozisyon:</label>
@@ -56,6 +56,21 @@
         <label for="HomeAddress">Ev Adresi:</label>
         @Html.TextArea("HomeAddress", null, new { @class = "form-control", @id = "HomeAddress", @rows = "5" })
     </div>
+    if (Model.Status == false)
+    {
+        <div class="form-group">
+            <label for="DateOfTermination">Ayrılma Tarihi:</label>
+            @Html.TextBox("DateOfTermination", ((DateTime)Model.DateOfTermination).ToString("yyyy-MM-dd"), new { @class = "form-control", @id = "DateOfTermination", @type = "date" })
+        </div>
+        <div class="form-group">
+            <label for="TerminationReason">Ayrılma Sebebi:</label>
+            @Html.TextBox("TerminationReason", null, new { @class = "form-control", @id = "HomeAddress", @rows = "5" })
+        </div>
+        <div class="form-group">
+            <label for="TerminationDescription">Açıklama:</label>
+            @Html.TextArea("TerminationDescription", null, new { @class = "form-control", @id = "HomeAddress", @rows = "5" })
+        </div>
+    }
 
     <div>
         <button type="submit" class="btn btn-primary">Güncelle</button>

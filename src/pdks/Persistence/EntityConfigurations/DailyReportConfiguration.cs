@@ -19,5 +19,37 @@ public class DailyReportConfiguration:IEntityTypeConfiguration<DailyReport>
         builder.Ignore(d => d.CreatedDate);
         builder.Ignore(d => d.UpdatedDate);
 
+
+        DailyReport[] dailyReports =
+        {
+            new DailyReport()
+            {
+                Id = 1,
+                TotalNumberOfEmployees = 5,
+                NumberOfEmployeesInTheWorkplace = 3,
+                NumberOfEmployeesNotAtWork = 2,
+                MoneyPaidToday = 1000,
+                Date = new DateTime(2023,05,25)
+            },
+            new DailyReport()
+            {
+                Id = 2,
+                TotalNumberOfEmployees = 5,
+                NumberOfEmployeesInTheWorkplace = 4,
+                NumberOfEmployeesNotAtWork = 1,
+                MoneyPaidToday = 1250,
+                Date = new DateTime(2023,05,26)
+            },
+            new DailyReport()
+            {
+                Id = 3,
+                TotalNumberOfEmployees = 5,
+                NumberOfEmployeesInTheWorkplace = 0,
+                NumberOfEmployeesNotAtWork = 5,
+                MoneyPaidToday = 0,
+                Date = new DateTime(2023,05,27)
+            }
+        };
+        builder.HasData(dailyReports);
     }
 }

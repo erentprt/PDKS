@@ -55,6 +55,13 @@ namespace Persistence.Migrations
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "admin@admin.com",
                             Password = "admin123"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "admin2@admin.com",
+                            Password = "admin123"
                         });
                 });
 
@@ -92,6 +99,35 @@ namespace Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("DailyReports", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Date = new DateTime(2023, 5, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            MoneyPaidToday = 1000,
+                            NumberOfEmployeesInTheWorkplace = 3,
+                            NumberOfEmployeesNotAtWork = 2,
+                            TotalNumberOfEmployees = 5
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Date = new DateTime(2023, 5, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            MoneyPaidToday = 1250,
+                            NumberOfEmployeesInTheWorkplace = 4,
+                            NumberOfEmployeesNotAtWork = 1,
+                            TotalNumberOfEmployees = 5
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Date = new DateTime(2023, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            MoneyPaidToday = 0,
+                            NumberOfEmployeesInTheWorkplace = 0,
+                            NumberOfEmployeesNotAtWork = 5,
+                            TotalNumberOfEmployees = 5
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Department", b =>
@@ -164,7 +200,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateOfEmployment")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 5, 23, 12, 51, 36, 790, DateTimeKind.Utc).AddTicks(8751));
+                        .HasDefaultValue(new DateTime(2023, 5, 27, 19, 46, 15, 217, DateTimeKind.Utc).AddTicks(7055));
 
                     b.Property<DateTime?>("DateOfTermination")
                         .HasColumnType("datetime2");
@@ -260,7 +296,7 @@ namespace Persistence.Migrations
                             AtWork = false,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(2003, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfEmployment = new DateTime(2023, 5, 23, 12, 51, 36, 791, DateTimeKind.Utc).AddTicks(3302),
+                            DateOfEmployment = new DateTime(2023, 5, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 1,
                             Email = "employee1@test.com",
                             EmployeeCode = "EMP001",
@@ -268,11 +304,11 @@ namespace Persistence.Migrations
                             HourlySalary = 27.0,
                             IdentityNumber = "12345678901",
                             MonthlySalary = 8100.0,
-                            Name = "John",
+                            Name = "Ali",
                             PhoneNumber = "5555555555",
                             Position = "Software Developer",
                             Status = true,
-                            Surname = "Doe",
+                            Surname = "ŞEN",
                             TotalWorkTime = 0
                         },
                         new
@@ -282,7 +318,7 @@ namespace Persistence.Migrations
                             AtWork = false,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(1990, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfEmployment = new DateTime(2023, 5, 23, 12, 51, 36, 791, DateTimeKind.Utc).AddTicks(3325),
+                            DateOfEmployment = new DateTime(2023, 5, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 1,
                             Email = "employee2@test.com",
                             EmployeeCode = "EMP002",
@@ -290,11 +326,11 @@ namespace Persistence.Migrations
                             HourlySalary = 30.0,
                             IdentityNumber = "36525478985",
                             MonthlySalary = 9000.0,
-                            Name = "Jennifer",
+                            Name = "Veli",
                             PhoneNumber = "5555555555",
                             Position = "Software Developer",
                             Status = true,
-                            Surname = "Lopez",
+                            Surname = "KANDEMİR",
                             TotalWorkTime = 0
                         },
                         new
@@ -304,7 +340,7 @@ namespace Persistence.Migrations
                             AtWork = false,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(1990, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfEmployment = new DateTime(2023, 5, 23, 12, 51, 36, 791, DateTimeKind.Utc).AddTicks(3328),
+                            DateOfEmployment = new DateTime(2023, 5, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 1,
                             Email = "employee3@test.com",
                             EmployeeCode = "EMP003",
@@ -312,11 +348,11 @@ namespace Persistence.Migrations
                             HourlySalary = 40.0,
                             IdentityNumber = "36569874785",
                             MonthlySalary = 12000.0,
-                            Name = "Adriana",
+                            Name = "Eren",
                             PhoneNumber = "5555555555",
                             Position = "Database Designer",
                             Status = true,
-                            Surname = "Lima",
+                            Surname = "TEPRET",
                             TotalWorkTime = 0
                         },
                         new
@@ -326,7 +362,7 @@ namespace Persistence.Migrations
                             AtWork = false,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(1990, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfEmployment = new DateTime(2023, 5, 23, 12, 51, 36, 791, DateTimeKind.Utc).AddTicks(3330),
+                            DateOfEmployment = new DateTime(2023, 5, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 2,
                             Email = "employee4@test.com",
                             EmployeeCode = "EMP004",
@@ -334,11 +370,11 @@ namespace Persistence.Migrations
                             HourlySalary = 40.0,
                             IdentityNumber = "32125696365",
                             MonthlySalary = 12000.0,
-                            Name = "Mine",
+                            Name = "Mehmet",
                             PhoneNumber = "5555555555",
                             Position = "Secretary",
                             Status = true,
-                            Surname = "Tugay",
+                            Surname = "ÇEVİK",
                             TotalWorkTime = 0
                         },
                         new
@@ -348,7 +384,7 @@ namespace Persistence.Migrations
                             AtWork = false,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(1990, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfEmployment = new DateTime(2023, 5, 23, 12, 51, 36, 791, DateTimeKind.Utc).AddTicks(3333),
+                            DateOfEmployment = new DateTime(2023, 5, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 2,
                             Email = "employee5@test.com",
                             EmployeeCode = "EMP005",
@@ -356,11 +392,11 @@ namespace Persistence.Migrations
                             HourlySalary = 40.0,
                             IdentityNumber = "78996369632",
                             MonthlySalary = 12000.0,
-                            Name = "Burçin",
+                            Name = "Hamza",
                             PhoneNumber = "5555555555",
                             Position = "Secretary",
                             Status = true,
-                            Surname = "Terzioğlu",
+                            Surname = "ERKURAN",
                             TotalWorkTime = 0
                         });
                 });
@@ -368,11 +404,12 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Domain.Entities.LoginAndExit", b =>
                 {
                     b.Property<string>("Userid_Date")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2023, 5, 27, 19, 46, 15, 218, DateTimeKind.Utc).AddTicks(4386));
 
                     b.Property<string>("EmployeeCode")
                         .IsRequired()
@@ -384,13 +421,64 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("LoginTime")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 5, 23, 12, 51, 36, 791, DateTimeKind.Utc).AddTicks(7924));
+                        .HasDefaultValue(new DateTime(2023, 5, 27, 19, 46, 15, 218, DateTimeKind.Utc).AddTicks(3913));
 
                     b.HasKey("Userid_Date");
 
                     b.HasIndex("EmployeeCode");
 
                     b.ToTable("LoginAndExits", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UseridDate = "1_2023-05-25",
+                            EmployeeCode = "EMP001",
+                            ExitTime = new DateTime(2023, 5, 25, 17, 0, 0, 0, DateTimeKind.Unspecified),
+                            LoginTime = new DateTime(2023, 5, 25, 8, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            UseridDate = "2_2023-05-25",
+                            EmployeeCode = "EMP002",
+                            ExitTime = new DateTime(2023, 5, 25, 17, 0, 0, 0, DateTimeKind.Unspecified),
+                            LoginTime = new DateTime(2023, 5, 25, 8, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            UseridDate = "3_2023-05-25",
+                            EmployeeCode = "EMP003",
+                            ExitTime = new DateTime(2023, 5, 25, 17, 0, 0, 0, DateTimeKind.Unspecified),
+                            LoginTime = new DateTime(2023, 5, 25, 8, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            UseridDate = "1_2023-05-26",
+                            EmployeeCode = "EMP001",
+                            ExitTime = new DateTime(2023, 5, 26, 17, 0, 0, 0, DateTimeKind.Unspecified),
+                            LoginTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            UseridDate = "2_2023-05-26",
+                            EmployeeCode = "EMP002",
+                            ExitTime = new DateTime(2023, 5, 26, 17, 0, 0, 0, DateTimeKind.Unspecified),
+                            LoginTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            UseridDate = "3_2023-05-26",
+                            EmployeeCode = "EMP003",
+                            ExitTime = new DateTime(2023, 5, 26, 17, 0, 0, 0, DateTimeKind.Unspecified),
+                            LoginTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            UseridDate = "4_2023-05-26",
+                            EmployeeCode = "EMP004",
+                            ExitTime = new DateTime(2023, 5, 26, 17, 0, 0, 0, DateTimeKind.Unspecified),
+                            LoginTime = new DateTime(2023, 5, 26, 8, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("Domain.SqlViews.DashboardStatistic", b =>
